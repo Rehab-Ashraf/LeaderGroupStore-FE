@@ -11,15 +11,18 @@ import { Observable, throwError } from 'rxjs';
 import { Injector } from '@angular/core';
 import { retry, catchError, map } from "rxjs/operators";
 import { ToasterComponent } from 'src/app/_shared/toaster/toaster.component';
+import { Router } from '@angular/router';
 
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
 
   toaster: ToasterComponent;
+  router:Router
 
   constructor(private injector: Injector) {
     this.toaster = this.injector.get(ToasterComponent);
+    this.router = this.injector.get(Router)
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -43,6 +46,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           case 400:
             errorMessage = `${error.error.data}`;
             break;
+          case 401:
+            this.router.navigate(["/auth/login"]);
+              break;
           case 403:
               errorMessage = `ليس لديك صلاحية`;
               this.toaster.error(errorMessage, "");
