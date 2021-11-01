@@ -13,7 +13,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="propClone"><a routerLink="home">Home</a></li>
                     <li class="propClone" *ngIf="authService.isAuthenticated"><a routerLink="/product">Product</a></li>
-                    <li class="propClone" *ngIf="authService.isAuthenticated"><a routerLink="/Category">Category</a></li>
+                    <li class="propClone" *ngIf="authService.isAuthenticated &&( 'Admin' | permission) "><a routerLink="/Category">Category</a></li>
                     <li class="propClone" *ngIf="!authService.isAuthenticated"><a routerLink="/auth/login">Login</a></li>
                     <li class="propClone" *ngIf="!authService.isAuthenticated"><a routerLink="/auth/register">Sign Up</a></li>
                     <li class="propClone" *ngIf="authService.isAuthenticated"><a (click)="logOut()">Log Out</a></li>
