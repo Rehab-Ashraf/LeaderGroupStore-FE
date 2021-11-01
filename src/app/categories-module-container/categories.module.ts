@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
 import { AddEditcategoriesComponent } from './add-editcategories/add-editcategories.component';
 import { CategoriesRouting } from './categories-routing';
+import { SharedModule } from '../_shared/shared.module';
 
 
 
@@ -10,7 +11,8 @@ import { CategoriesRouting } from './categories-routing';
   declarations: [AllCategoriesComponent, AddEditcategoriesComponent],
   imports: [
     CommonModule,
-    CategoriesRouting
+    CategoriesRouting,
+    SharedModule
   ],
   exports:[
     AllCategoriesComponent

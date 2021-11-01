@@ -1,18 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToasterComponent } from './toaster/toaster.component';
-
-
-
+import { PermissionPipe } from '../_core/pipe/permission.pipe';
 
 @NgModule({
-  declarations: [ToasterComponent],
+  declarations: [ToasterComponent, PermissionPipe],
   imports: [
     CommonModule,
   ],
   exports:[
-
+    PermissionPipe
   ]
 })
 export class SharedModule { }
